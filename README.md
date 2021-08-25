@@ -8,7 +8,7 @@
 なお、ブラウザーを強制的に終了させるようなMODなので、次回ブラウザー起動時に「正常に終了できませんでした」とかでてくるかもです。
 
 ## 依存MOD
--[BSIPA](https://bsmg.github.io/BeatSaber-IPA-Reloaded/)
+- [BSIPA](https://bsmg.github.io/BeatSaber-IPA-Reloaded/)
 
 ## 導入方法
 1. [Releases](https://github.com/rakkyo150/CloseBrowsers/releases)からCloseBrowsers.dllをダウンロード
