@@ -10,7 +10,7 @@
 ## 依存MOD
 -[BSIPA](https://bsmg.github.io/BeatSaber-IPA-Reloaded/)
 
-##導入方法
+## 導入方法
 1. [Releases](https://github.com/rakkyo150/CloseBrowsers/releases)からCloseBrowsers.dllをダウンロード
 2. CloseBrowsers.dllをBeat Saberのインストールフォルダ下のPluginsフォルダに追加
 
