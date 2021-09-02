@@ -3,9 +3,9 @@
   "id": "CloseBrowsers",
   "name": "CloseBrowsers",
   "author": "rakkyo150",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Close Browsers at startup",
-  "gameVersion": "1.16.4",
+  "gameVersion": "1.17.0",
   "dependsOn": {
     "BSIPA": "^4.0.5"
   },
