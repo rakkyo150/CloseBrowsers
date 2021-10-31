@@ -3,11 +3,12 @@
   "id": "CloseBrowsers",
   "name": "CloseBrowsers",
   "author": "rakkyo150",
-  "version": "1.0.1",
-  "description": "Close Browsers at startup",
-  "gameVersion": "1.17.0",
+  "version": "1.1.0",
+  "description": "Close Browsers in GameCore Scene",
+  "gameVersion": "1.18.0",
   "dependsOn": {
-    "BSIPA": "^4.0.5"
+    "BSIPA": "^4.0.5",
+    "BeatSaberMarkupLanguage": "^1.5.2"
   },
   "features": []
 }
