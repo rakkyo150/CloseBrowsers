@@ -34,65 +34,68 @@ namespace CloseBrowsers
 
             SceneManager.activeSceneChanged += (Scene pre, Scene next) =>
             {
-                if (next.name == "GameCore")
+                if (PluginConfig.Instance.Enable)
                 {
-                    Plugin.Log.Debug($"{pre.name}=>GameCore");
-
-                    Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                    Console.WriteLine(chromeInstances);
-
-                    foreach (Process p in chromeInstances)
+                    if (next.name == "GameCore")
                     {
-                        if (!p.HasExited)
+                        Plugin.Log.Debug($"{pre.name}=>GameCore");
+
+                        Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                        Console.WriteLine(chromeInstances);
+
+                        foreach (Process p in chromeInstances)
                         {
-                            p.CloseMainWindow();
                             if (!p.HasExited)
                             {
-                                p.Kill();
+                                p.CloseMainWindow();
+                                if (!p.HasExited)
+                                {
+                                    p.Kill();
+                                }
                             }
                         }
-                    }
 
-                    Process[] iExploerInstances = Process.GetProcessesByName("iexplore");
-                    foreach (Process p in iExploerInstances)
-                    {
-                        if (!p.HasExited)
+                        Process[] iExploerInstances = Process.GetProcessesByName("iexplore");
+                        foreach (Process p in iExploerInstances)
                         {
-                            p.CloseMainWindow();
                             if (!p.HasExited)
                             {
-                                p.Kill();
+                                p.CloseMainWindow();
+                                if (!p.HasExited)
+                                {
+                                    p.Kill();
+                                }
                             }
                         }
-                    }
 
-                    Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
-                    foreach (Process p in iExploerInstances)
-                    {
-                        if (!p.HasExited)
+                        Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
+                        foreach (Process p in iExploerInstances)
                         {
-                            p.CloseMainWindow();
                             if (!p.HasExited)
                             {
-                                p.Kill();
+                                p.CloseMainWindow();
+                                if (!p.HasExited)
+                                {
+                                    p.Kill();
+                                }
                             }
                         }
-                    }
 
-                    Process[] firefoxInstances = Process.GetProcessesByName("firefox");
-                    foreach (Process p in iExploerInstances)
-                    {
-                        if (!p.HasExited)
+                        Process[] firefoxInstances = Process.GetProcessesByName("firefox");
+                        foreach (Process p in iExploerInstances)
                         {
-                            p.CloseMainWindow();
                             if (!p.HasExited)
                             {
-                                p.Kill();
+                                p.CloseMainWindow();
+                                if (!p.HasExited)
+                                {
+                                    p.Kill();
+                                }
                             }
                         }
-                    }
 
-                    Plugin.Log.Debug("Finish Closing Browsers");
+                        Plugin.Log.Debug("Finish Closing Browsers");
+                    }
                 }
             };
         }
