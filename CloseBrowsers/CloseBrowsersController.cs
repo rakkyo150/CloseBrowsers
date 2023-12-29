@@ -41,8 +41,6 @@ namespace CloseBrowsers
                         Plugin.Log.Debug($"{pre.name}=>GameCore");
 
                         Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                        Console.WriteLine(chromeInstances);
-
                         foreach (Process p in chromeInstances)
                         {
                             if (!p.HasExited)
@@ -69,7 +67,7 @@ namespace CloseBrowsers
                         }
 
                         Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
-                        foreach (Process p in iExploerInstances)
+                        foreach (Process p in msEdgeInstances)
                         {
                             if (!p.HasExited)
                             {
@@ -82,7 +80,7 @@ namespace CloseBrowsers
                         }
 
                         Process[] firefoxInstances = Process.GetProcessesByName("firefox");
-                        foreach (Process p in iExploerInstances)
+                        foreach (Process p in firefoxInstances)
                         {
                             if (!p.HasExited)
                             {
