@@ -3,7 +3,7 @@
   "id": "CloseBrowsers",
   "name": "CloseBrowsers",
   "author": "rakkyo150",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Close Browsers in GameCore Scene",
   "gameVersion": "1.31.0",
   "dependsOn": {
