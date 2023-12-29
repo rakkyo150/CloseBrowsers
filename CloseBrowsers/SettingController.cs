@@ -3,7 +3,7 @@ using BeatSaberMarkupLanguage.Util;
 
 namespace CloseBrowsers
 {
-    public class SettingController:PersistentSingleton<SettingController>
+    public class SettingController : PersistentSingleton<SettingController>
     {
         [UIValue("Enable")]
         public bool Enable

@@ -1,9 +1,9 @@
-﻿using IPA;
+﻿using BeatSaberMarkupLanguage.Settings;
+using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
-using BeatSaberMarkupLanguage.Settings;
 
 namespace CloseBrowsers
 {
@@ -19,7 +19,7 @@ namespace CloseBrowsers
         /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
         /// Only use [Init] with one Constructor.
         /// </summary>
-        public void Init(IPALogger logger,Config cfgProvider)
+        public void Init(IPALogger logger, Config cfgProvider)
         {
             Instance = this;
             Log = logger;
