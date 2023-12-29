@@ -1,7 +1,7 @@
 # CloseBrowsers
 ゲームプレイ画面移行時にブラウザーを終了させるBeat SaberのMOD。<br>
 ブラウザー消し忘れてプチフリとか起こしたことある人は導入してみるといいかも。<br>
-対応ブラウザーはGoogle Chrome,Firefox,Internet Explorer,Microsoft Edgeの４つです。<br>
+対応ブラウザーはGoogle Chrome,Firefox,Internet Explorer,Microsoft Edge,Vivaldiの５つです。<br>
 
 特に対策はしていないのですが、少なくとも私の環境ではbeat-saber-overlayとの干渉はなかったです。<br>
 もし干渉したらIssuesとかで教えてもらえると助かります。
