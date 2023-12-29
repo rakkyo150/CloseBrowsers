@@ -13,7 +13,7 @@ namespace CloseBrowsers
     {
         public static CloseBrowsersController Instance { get; private set; }
         private string[] browserProcessesName =
-            new string[] { "chrome", "iexplore", "msedge", "firefox" };
+            new string[] { "chrome", "iexplore", "msedge", "firefox", "vivaldi" };
 
         // These methods are automatically called by Unity, you should remove any you aren't using.
         #region Monobehaviour Messages
