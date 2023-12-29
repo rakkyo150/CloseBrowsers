@@ -12,6 +12,8 @@ namespace CloseBrowsers
     public class CloseBrowsersController : MonoBehaviour
     {
         public static CloseBrowsersController Instance { get; private set; }
+        private string[] browserProcessesName =
+            new string[] { "chrome", "iexplore", "msedge", "firefox" };
 
         // These methods are automatically called by Unity, you should remove any you aren't using.
         #region Monobehaviour Messages
@@ -38,12 +40,14 @@ namespace CloseBrowsers
         {
             if (!PluginConfig.Instance.Enable) return;
 
-            if (next.name == "GameCore")
+            if (next.name != "GameCore") return;
+
+            Plugin.Log.Debug($"{pre.name}=>GameCore");
+
+            foreach (string name in browserProcessesName)
             {
-                Plugin.Log.Debug($"{pre.name}=>GameCore");
-
-                Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                foreach (Process p in chromeInstances)
+                Process[] instances = Process.GetProcessesByName(name);
+                foreach (Process p in instances)
                 {
                     if (!p.HasExited)
                     {
@@ -54,48 +58,9 @@ namespace CloseBrowsers
                         }
                     }
                 }
-
-                Process[] iExploerInstances = Process.GetProcessesByName("iexplore");
-                foreach (Process p in iExploerInstances)
-                {
-                    if (!p.HasExited)
-                    {
-                        p.CloseMainWindow();
-                        if (!p.HasExited)
-                        {
-                            p.Kill();
-                        }
-                    }
-                }
-
-                Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
-                foreach (Process p in msEdgeInstances)
-                {
-                    if (!p.HasExited)
-                    {
-                        p.CloseMainWindow();
-                        if (!p.HasExited)
-                        {
-                            p.Kill();
-                        }
-                    }
-                }
-
-                Process[] firefoxInstances = Process.GetProcessesByName("firefox");
-                foreach (Process p in firefoxInstances)
-                {
-                    if (!p.HasExited)
-                    {
-                        p.CloseMainWindow();
-                        if (!p.HasExited)
-                        {
-                            p.Kill();
-                        }
-                    }
-                }
-
-                Plugin.Log.Debug("Finish Closing Browsers");
             }
+
+            Plugin.Log.Debug("Finish Closing Browsers");
         }
 
         /// <summary>
