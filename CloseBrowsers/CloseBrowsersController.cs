@@ -31,72 +31,73 @@ namespace CloseBrowsers
             GameObject.DontDestroyOnLoad(this); // Don't destroy this object on scene changes
             Instance = this;
             Plugin.Log?.Debug($"{name}: Awake()");
+            SceneManager.activeSceneChanged += CloseBrowsers;
+        }
 
-            SceneManager.activeSceneChanged += (Scene pre, Scene next) =>
+        private void CloseBrowsers(Scene pre, Scene next)
+        {
+            if (!PluginConfig.Instance.Enable) return;
+
+            if (next.name == "GameCore")
             {
-                if (PluginConfig.Instance.Enable)
+                Plugin.Log.Debug($"{pre.name}=>GameCore");
+
+                Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                foreach (Process p in chromeInstances)
                 {
-                    if (next.name == "GameCore")
+                    if (!p.HasExited)
                     {
-                        Plugin.Log.Debug($"{pre.name}=>GameCore");
-
-                        Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                        foreach (Process p in chromeInstances)
+                        p.CloseMainWindow();
+                        if (!p.HasExited)
                         {
-                            if (!p.HasExited)
-                            {
-                                p.CloseMainWindow();
-                                if (!p.HasExited)
-                                {
-                                    p.Kill();
-                                }
-                            }
+                            p.Kill();
                         }
-
-                        Process[] iExploerInstances = Process.GetProcessesByName("iexplore");
-                        foreach (Process p in iExploerInstances)
-                        {
-                            if (!p.HasExited)
-                            {
-                                p.CloseMainWindow();
-                                if (!p.HasExited)
-                                {
-                                    p.Kill();
-                                }
-                            }
-                        }
-
-                        Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
-                        foreach (Process p in msEdgeInstances)
-                        {
-                            if (!p.HasExited)
-                            {
-                                p.CloseMainWindow();
-                                if (!p.HasExited)
-                                {
-                                    p.Kill();
-                                }
-                            }
-                        }
-
-                        Process[] firefoxInstances = Process.GetProcessesByName("firefox");
-                        foreach (Process p in firefoxInstances)
-                        {
-                            if (!p.HasExited)
-                            {
-                                p.CloseMainWindow();
-                                if (!p.HasExited)
-                                {
-                                    p.Kill();
-                                }
-                            }
-                        }
-
-                        Plugin.Log.Debug("Finish Closing Browsers");
                     }
                 }
-            };
+
+                Process[] iExploerInstances = Process.GetProcessesByName("iexplore");
+                foreach (Process p in iExploerInstances)
+                {
+                    if (!p.HasExited)
+                    {
+                        p.CloseMainWindow();
+                        if (!p.HasExited)
+                        {
+                            p.Kill();
+                        }
+                    }
+                }
+
+                Process[] msEdgeInstances = Process.GetProcessesByName("msedge");
+                foreach (Process p in msEdgeInstances)
+                {
+                    if (!p.HasExited)
+                    {
+                        p.CloseMainWindow();
+                        if (!p.HasExited)
+                        {
+                            p.Kill();
+                        }
+                    }
+                }
+
+                Process[] firefoxInstances = Process.GetProcessesByName("firefox");
+                foreach (Process p in firefoxInstances)
+                {
+                    if (!p.HasExited)
+                    {
+                        p.CloseMainWindow();
+                        if (!p.HasExited)
+                        {
+                            p.Kill();
+                        }
+                    }
+                }
+
+                Plugin.Log.Debug("Finish Closing Browsers");
+            }
         }
+
         /// <summary>
         /// Only ever called once on the first frame the script is Enabled. Start is called after any other script's Awake() and before Update().
         /// </summary>
@@ -113,9 +114,9 @@ namespace CloseBrowsers
         private void OnDestroy()
         {
             Plugin.Log?.Debug($"{name}: OnDestroy()");
+            SceneManager.activeSceneChanged -= CloseBrowsers;
             if (Instance == this)
                 Instance = null; // This MonoBehaviour is being destroyed, so set the static instance property to null.
-
         }
         #endregion
     }

@@ -45,14 +45,12 @@ namespace CloseBrowsers
         {
             Log.Debug("OnApplicationStart");
             new GameObject("CloseBrowsersController").AddComponent<CloseBrowsersController>();
-
         }
 
         [OnExit]
         public void OnApplicationQuit()
         {
             Log.Debug("OnApplicationQuit");
-
         }
     }
 }
